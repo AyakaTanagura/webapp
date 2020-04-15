@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>勤怠管理</title>
+  </head>
+  <body>
+    <header>
+      <h1>勤怠管理</h1>
+      <div class="name">
+        <input type="text" placeholder="名前" >
+        <svg class="bi bi-people-circle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 008 15a6.987 6.987 0 005.468-2.63z"/>
+          <path fill-rule="evenodd" d="M8 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+          <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zM0 8a8 8 0 1116 0A8 8 0 010 8z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+    </header>
+
+    <hr>
+
+    <main>
+
+      <div class="card">
+        <div class="card-body">
+          勤怠登録
+        </div>
+      </div>
+      
+      <div class="month">
+        2020年
+        <select name="month">
+          <option value="1">1月分</option>
+          <option value="2">2月分</option>
+          <option value="3">3月分</option>
+          <option value="4">4月分</option>
+          <option value="5">5月分</option>
+          <option value="6">6月分</option>
+          <option value="7">7月分</option>
+          <option value="8">8月分</option>
+          <option value="9">9月分</option>
+          <option value="10">10月分</option>
+          <option value="11">11月分</option>
+          <option value="12">12月分</option>
+        </select>
+      </div>
+      
+      <div class="container">
+        
+        <div class="table text-center">
+          <table class="table table-bordered">
+            <tr>
+              <th>時間給</th>
+              <td>1,100</td>
+              <th>勤務日数</th>
+              <td>14日</td>
+            </tr>
+            <tr>
+              <th>交通費</th>
+              <td>3,000</td>
+              <th>賃金</th>
+              <td>40,000円</td>
+            </tr>
+            <tr>
+              <th>手当等</th>
+              <td>2,100</td>
+              <th>総支給額</th>
+              <td>45,000円</td>
+            </tr>
+          </table>
+        </div>
+        
+        
+        <div class="button">
+          <button type="button" class="btn btn-light">登録</button>
+        </div>
+          
+      </div>
+      
+      <div class="table">
+        
+        <table class="table table-bordered" id="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">日付</th>
+              <th scope="col">開始時間</th>
+              <th scope="col">終了時間</th>
+              <th scope="col">休憩時間</th>
+              <th scope="col">交通費</th>
+              <th scope="col" class="sum">合計時間</th>
+              <th scope="col" class="plus">追加</th>
+              <th scope="col" class="delete">削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1(水)</th>
+              <td>10:00</td>
+              <td>14:00</td>
+              <td>1:00</td>
+              <td>560</td>
+              <td>3:00</td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">1(水)</th>
+              <td>15:30</td>
+              <td>17:00</td>
+              <td></td>
+              <td></td>
+              <td>1:30</td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">2(木)</th>
+              <td>10:00</td>
+              <td>14:00</td>
+              <td>1:00</td>
+              <td>560</td>
+              <td>3:00</td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">3(金)</th>
+              <td>10:00</td>
+              <td>14:00</td>
+              <td>1:00</td>
+              <td>560</td>
+              <td>3:00</td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            
+            <tr class="table-active">
+              <th scope="row">4(土)</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            
+            <tr class="table-active">
+              <th scope="row">5(日)</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">6(月)</th>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td></td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            <tr>
+              <th scope="row">7(火)</th>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td></td>
+              <td><button type="plus" class="plus" vvalue="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+   
+            <tr>
+              <th scope="row">8(水)</th>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td></td>
+              <td><button type="plus" class="plus" value="行を追加" id="coladd" onclick="coladd(this)">
+                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+              </svg></button></td>
+              <td><button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+              </svg></button></td>
+            </tr>
+            
+          </tbody>
+        </table>
+        
+      </div>
+    </main>
+    <script>
+      function coladd(o) {
+          var tr = o.parentNode.parentNode
+        	tr.parentNode.insertBefore(tr.cloneNode(true), tr.nextSibling)
+          // var table = document.getElementById("table");
+          // // 行を行末に追加
+          // var row = table.insertRow(-1);
+          //td分追加
+          // var cell1 = row.insertCell(-1);
+          // var cell2 = row.insertCell(-1);
+          // var cell3 = row.insertCell(-1);
+          // var cell4 = row.insertCell(-1);
+          // var cell5 = row.insertCell(-1);
+          // var cell6 = row.insertCell(-1);
+          // var cell7 = row.insertCell(-1);
+          // var cell8 = row.insertCell(-1);
+          // セルの内容入力
+          // cell2.innerHTML = '<input type="text">';
+          // cell3.innerHTML = '<input type="text">';
+          // cell4.innerHTML = '<input type="text">';
+          // cell5.innerHTML = '<input type="text">';
+          // cell8.innerHTML = '<button type="telete" class="delete" value="削除" onclick="coldel(this)"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/></svg></button>';
+          }
+      function coldel(obj) {
+          // 削除ボタンを押下された行を取得
+          tr = obj.parentNode.parentNode;
+          // trのインデックスを取得して行を削除する
+          tr.parentNode.deleteRow(tr.sectionRowIndex);
+      }
+  </script>
+      
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
